@@ -2,6 +2,12 @@
 
 A modern, sleek weather application featuring real-time weather data, location tracking, and beautiful skeuomorphic design.
 
+## Screenshots
+
+| Home Screen | 5-Day Forecast | Saved Locations |
+|:---:|:---:|:---:|
+| <img src="assets/screenshots/home_screen.png" width="200"> | <img src="assets/screenshots/forecast.png" width="200"> | <img src="assets/screenshots/locations.png" width="200"> |
+
 ## Features
 
 ### Real-Time Weather Data
