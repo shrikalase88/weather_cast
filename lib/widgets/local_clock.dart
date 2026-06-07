@@ -23,14 +23,18 @@ class _LocalClockState extends State<LocalClock> {
   late Timer _timer;
   late String _timeString;
   late String _dateString;
-  late String _timezoneName;
+  late tz.Location _location;
+
+  static final _timeFormat = DateFormat('hh:mm a');
+  static final _dateFormat = DateFormat('EEEE, MMM d');
 
   @override
   void initState() {
     super.initState();
-    _timezoneName = tzmap.latLngToTimezoneString(widget.latitude, widget.longitude);
+    final timezoneName = tzmap.latLngToTimezoneString(widget.latitude, widget.longitude);
+    _location = tz.getLocation(timezoneName);
     _updateTime();
-    _timer = Timer.periodic(const Duration(seconds: 1), (Timer t) => _updateTime());
+    _timer = Timer.periodic(const Duration(seconds: 30), (_) => _updateTime());
   }
 
   @override
@@ -40,23 +44,17 @@ class _LocalClockState extends State<LocalClock> {
   }
 
   void _updateTime() {
-    final location = tz.getLocation(_timezoneName);
-    final now = tz.TZDateTime.now(location);
-    
-    final timeFormat = DateFormat('hh:mm a');
-    final dateFormat = DateFormat('EEEE, MMM d');
-
-    if (mounted) {
-      setState(() {
-        _timeString = timeFormat.format(now);
-        _dateString = dateFormat.format(now).toUpperCase();
-      });
-    }
+    final now = tz.TZDateTime.now(_location);
+    setState(() {
+      _timeString = _timeFormat.format(now);
+      _dateString = _dateFormat.format(now).toUpperCase();
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           _timeString,

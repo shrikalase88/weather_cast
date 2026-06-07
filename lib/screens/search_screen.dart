@@ -45,8 +45,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add Location', style: TextStyle(fontWeight: FontWeight.w900)),
-        backgroundColor: Colors.transparent,
+        title: const Text('Add Location'),
       ),
       body: Column(
         children: [
@@ -111,7 +110,7 @@ class _SearchScreenState extends ConsumerState<SearchScreen> {
                               );
                             } else {
                               await ref.read(savedLocationsProvider.notifier).addLocation(loc);
-                              if (mounted) context.pop();
+                              if (context.mounted) context.pop();
                             }
                           },
                           color: savedCount >= 2 ? Colors.grey.withValues(alpha: 0.1) : AppColors.surface,
