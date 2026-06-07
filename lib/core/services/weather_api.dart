@@ -6,7 +6,7 @@ import '../../models/forecast.dart';
 
 class WeatherApiService {
   static String get _apiKey {
-    final key = dotenv.env['OPENWEATHER_API_KEY'] ?? '';
+    final key = dotenv.get('OPENWEATHER_API_KEY', fallback: '');
     if (key.isEmpty) {
       throw Exception('OpenWeather API key not configured. Please add OPENWEATHER_API_KEY to .env file');
     }

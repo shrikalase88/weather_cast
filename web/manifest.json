@@ -1,12 +1,11 @@
 {
-    "name": "weather_cast",
-    "short_name": "weather_cast",
+    "name": "Weather Cast",
+    "short_name": "Weather Cast",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "Weather Application",
-    "orientation": "portrait-primary",
+    "background_color": "#0A1929",
+    "theme_color": "#00D1B2",
+    "description": "Weather Cast - A modern skeuomorphic weather app",
     "prefer_related_applications": false,
     "icons": [
         {
