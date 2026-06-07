@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import '../providers/location_provider.dart';
 import '../providers/saved_locations_provider.dart';
 import '../providers/weather_provider.dart';
+import '../services/widget_service.dart';
 import '../widgets/skeu_card.dart';
 import '../widgets/skeu_button.dart';
 import '../widgets/local_clock.dart';
@@ -20,6 +21,15 @@ class HomeScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final currentLocationAsync = ref.watch(locationProvider);
     final savedLocations = ref.watch(savedLocationsProvider);
+
+    ref.listen(locationProvider, (prev, next) {
+      final location = next.valueOrNull;
+      if (location == null) return;
+      final weatherState = ref.read(currentWeatherProvider((lat: location.latitude, lon: location.longitude)));
+      final weather = weatherState.valueOrNull;
+      if (weather == null) return;
+      WidgetService.updateWeatherWidget(weather, location.name, location.countryCode ?? '');
+    });
 
     return Scaffold(
       appBar: AppBar(

@@ -7,6 +7,7 @@ import 'package:timezone/data/latest.dart' as tz;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'core/theme/colors.dart';
 import 'providers/pin_provider.dart';
+import 'services/widget_service.dart';
 import 'screens/splash_screen.dart';
 import 'screens/pin_screen.dart';
 import 'screens/home_screen.dart';
@@ -25,6 +26,7 @@ void main() async {
   ));
   await dotenv.load(fileName: ".env");
   tz.initializeTimeZones();
+  await WidgetService.initialize();
   final prefs = await SharedPreferences.getInstance();
 
   runApp(
