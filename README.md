@@ -4,7 +4,9 @@ A modern, sleek weather application featuring real-time weather data, location t
 
 ## Screenshots
 
-<img src="assets/screenshots/forecast.png" width="300">
+| Home Screen | 5-Day Forecast | Login Screen |
+|:---:|:---:|:---:|
+| <img src="assets/screenshots/home_screen.png" width="200"> | <img src="assets/screenshots/forecast.png" width="200"> | <img src="assets/screenshots/locations.png" width="200"> |
 
 ## Features
 
